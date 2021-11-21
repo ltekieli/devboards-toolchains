@@ -26,3 +26,15 @@ output/
 ├── aarch64-rpi3-linux-gnu
 └── downloads
 ```
+
+Package:
+```
+tar -c \
+    --sort=name \
+    --mtime="1970-01-01" \
+    --owner=0 \
+    --group=0 \
+    --numeric-owner \
+    -C output/aarch64-rpi3-linux-gnu . \
+    | gzip -n > output/aarch64-rpi3-linux-gnu.tar.gz
+```
