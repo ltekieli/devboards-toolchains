@@ -6,8 +6,8 @@ source ~/.ct-ng-$(cat ./.ct-ng-version)/activate
 mkdir -p output/downloads
 export CT_PREFIX=${PWD}/output
 
-TAG=2023.04.01
-MTIME="2023-04-01 00:00Z"
+TAG=2024.11.01
+MTIME="2024-11-01 00:00Z"
 
 function _build() {
     CONFIG=$1
@@ -27,16 +27,15 @@ function _build() {
 }
 
 function _release() {
-    hub release create -m "v${TAG}" \
-           -a output/avr.tar.gz \
-           -a output/avr.tar.gz.sha256 \
-           -a output/aarch64-rpi3-linux-gnu.tar.gz \
-           -a output/aarch64-rpi3-linux-gnu.tar.gz.sha256 \
-           -a output/arm-cortex_a8-linux-gnueabihf.tar.gz \
-           -a output/arm-cortex_a8-linux-gnueabihf.tar.gz.sha256 \
-           -a output/armv6-rpi-linux-gnueabihf.tar.gz \
-           -a output/armv6-rpi-linux-gnueabihf.tar.gz.sha256 \
-           "v${TAG}"
+    gh release create "v${TAG}" \
+        output/avr.tar.gz \
+        output/avr.tar.gz.sha256 \
+        output/aarch64-rpi3-linux-gnu.tar.gz \
+        output/aarch64-rpi3-linux-gnu.tar.gz.sha256 \
+        output/arm-cortex_a8-linux-gnueabihf.tar.gz \
+        output/arm-cortex_a8-linux-gnueabihf.tar.gz.sha256 \
+        output/armv6-rpi-linux-gnueabihf.tar.gz \
+        output/armv6-rpi-linux-gnueabihf.tar.gz.sha256
 }
 
 function help() {
